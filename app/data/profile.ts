@@ -83,7 +83,7 @@ export type Profile = {
 };
 
 export const profile: Profile = {
-  name: "Dr. Silky Sharma",
+  name: "Dr. Silky",
   title: "Ph.D. in Food Science & Nutrition",
   heroTitles: [
     "Ph.D. in Food Science & Nutrition",
@@ -98,9 +98,9 @@ export const profile: Profile = {
   heroBadge: "Research-led clinical nutrition practice",
   heroFocus: "Translating nutrition science into compassionate, evidence-based patient care.",
   intro:
-    "Dr. Silky Sharma is a nutrition researcher and clinical dietitian whose work draws on food science, research, and patient-centred practice to support evidence-based dietary care.",
+    "Dr. Silky is a nutrition researcher and clinical dietitian whose work draws on food science, research, and patient-centred practice to support evidence-based dietary care.",
   about:
-    "Dr. Silky Sharma holds a Ph.D. in Food Science and Nutrition and brings together clinical nutrition, nutrition research, and evidence-based dietary practice in her professional work.",
+    "Dr. Silky holds a Ph.D. in Food Science and Nutrition and brings together clinical nutrition, nutrition research, and evidence-based dietary practice in her professional work.",
   aboutHighlights: [
     "Ph.D. in Food Science & Nutrition",
     "Clinical Nutrition",
