@@ -1,7 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Award,
-  BookOpenText,
   BrainCircuit,
   BriefcaseBusiness,
   GraduationCap,
@@ -34,12 +33,14 @@ export type EducationEntry = {
 export type ConferenceEntry = {
   title: string;
   type: string;
+  organization: string;
   year: string;
 };
 
 export type Profile = {
   name: string;
   title: string;
+  heroTitles: string[];
   email: string;
   linkedin: string;
   fiverr: string;
@@ -48,25 +49,31 @@ export type Profile = {
   heroFocus: string;
   intro: string;
   about: string;
-  aboutAdditional: string;
+  aboutHighlights: string[];
   aboutClosing: string;
   education: EducationEntry[];
   internship: {
     hospital: string;
+    location: string;
     period: string;
     details: string;
+    focusAreas: string[];
+  };
+  currentWork: {
+    title: string;
+    description: string;
   };
   services: string[];
   publications: Publication[];
   researchInterests: string[];
   researchCompetencies: string[];
   skills: SkillGroup[];
-  awards: Array<{
+  facultyAchievement: {
     title: string;
+    highlight: string;
+    context: string;
     organization: string;
-    year: string;
-    details: string;
-  }>;
+  };
   conferences: ConferenceEntry[];
   languages: string[];
   interests: string[];
@@ -77,44 +84,91 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Dr. Silky Sharma",
-  title: "Ph.D. in Food Science & Nutrition | Freelance Clinical Dietitian | Nutrition Researcher",
+  title: "Ph.D. in Food Science & Nutrition",
+  heroTitles: [
+    "Ph.D. in Food Science & Nutrition",
+    "Clinical Dietitian",
+    "Nutrition Researcher",
+    "Freelance Nutrition Consultant",
+  ],
   email: "sharmasilky3003@gmail.com",
   linkedin: "https://www.linkedin.com/in/silky-sharma-a11854241",
-  fiverr: "https://www.fiverr.com/sellers/silky3003/edit",
+  fiverr: "https://www.fiverr.com/silky3003",
   location: "India",
-  heroBadge: "Premium nutrition science portfolio",
+  heroBadge: "Research-led clinical nutrition practice",
   heroFocus: "Translating nutrition science into compassionate, evidence-based patient care.",
   intro:
-    "My name is Dr. Silky Sharma. I have completed my Ph.D. in Food Science and Nutrition from the Department of Home Science. I also hold a Master's degree in Food Science and Nutrition.",
+    "Dr. Silky Sharma is a nutrition researcher and clinical dietitian whose work draws on food science, research, and patient-centred practice to support evidence-based dietary care.",
   about:
-    "During my academic journey, I gained practical exposure through my internship at Max Hospital, where I learned about patient nutritional assessment, diet planning, therapeutic diets, and nutrition counseling. My research background has also strengthened my understanding of clinical nutrition, food science, and evidence-based dietary management.",
-  aboutAdditional:
-    "I am passionate about helping people improve their health through proper nutrition. I have good communication skills, a strong willingness to learn, and I enjoy working with patients as part of a healthcare team.",
+    "Dr. Silky Sharma holds a Ph.D. in Food Science and Nutrition and brings together clinical nutrition, nutrition research, and evidence-based dietary practice in her professional work.",
+  aboutHighlights: [
+    "Ph.D. in Food Science & Nutrition",
+    "Clinical Nutrition",
+    "Nutrition Research",
+    "Evidence-based dietary practice",
+    "Patient-centred care",
+    "Passion for helping people improve health through nutrition",
+    "Looking for opportunities as Dietitian and Nutrition Consultant",
+  ],
   aboutClosing:
-    "I am looking for an opportunity as a Dietitian where I can apply my knowledge, continue learning, and contribute to improving patients' health and well-being.",
+    "She is committed to helping people improve health through nutrition while continuing to grow professionally in clinical and consultancy settings.",
   education: [
     {
-      degree: "Ph.D. Food Science & Nutrition",
-      institution: "Department of Home Science",
-      period: "2020 – 2024",
-      details: "Research focused on nutrition science, dietary interventions, and evidence-based clinical nutrition strategies.",
+      degree: "Ph.D. in Food Science and Nutrition",
+      institution: "Banasthali Vidyapeeth",
+      period: "2025",
+      details: "Thesis: Effect of supplementation of pumpkin and sesame seeds on Serum zinc level of diabetic subjects.",
     },
-
     {
-      degree: "Master of Science in Food Science & Nutrition",
-      institution: "Department of Home Science",
-      period: "2018 – 2020",
-      details: "Specialized in food chemistry, therapeutic nutrition, and public health dietary practices.",
+      degree: "M.Sc. in Food Science and Nutrition",
+      institution: "Banasthali Vidyapeeth",
+      period: "2018",
+      details:
+        "Dissertation: Influence of malting on nutrient composition and alpha-amylase activity in wheat cultivars (aestivum, dicoccum and durum)",
+    },
+    {
+      degree: "Diploma in Food Processing and Service",
+      institution: "Banasthali Vidyapeeth",
+      period: "2018",
+      details: "",
+    },
+    {
+      degree: "B.Sc. in Home Science",
+      institution: "Banasthali Vidyapeeth",
+      period: "2016",
+      details: "",
     },
   ],
-
   internship: {
-    hospital: "Max Hospital",
-    period: "Clinical Nutrition Internship",
+    hospital: "MAX Super Specialty Hospital",
+    location: "Shalimar Bagh",
+    period: "May–June 2017",
     details:
-      "Gained hands-on experience in nutritional assessment, diet planning, therapeutic diets, and patient counseling under clinical supervision.",
+      "Clinical internship experience supporting patient diet consultation, ICU nutrition, therapeutic diet formulation, nutritional assessment, diet planning, and nutrition counselling.",
+    focusAreas: [
+      "Patient Diet Consultation",
+      "ICU Nutrition",
+      "Therapeutic Diet Formulation",
+      "Nutritional Assessment",
+      "Diet Planning",
+      "Nutrition Counselling",
+    ],
   },
-  services: [],
+  currentWork: {
+    title: "Currently working as an Online Clinical Dietitian",
+    description: "Providing online nutrition consultations and evidence-based guidance to individuals seeking practical support.",
+  },
+  services: [
+    "Personalized Diet Planning",
+    "Weight Management",
+    "Diabetes Nutrition Management",
+    "Clinical Nutrition Consultation",
+    "Therapeutic Diet Planning",
+    "Medical Nutrition Therapy",
+    "Online Nutrition Consultation",
+    "Nutrition Counselling",
+    "Lifestyle Modification Guidance",
+  ],
   publications: [
     {
       title: "Sensory Acceptability and Nutritional Composition of Pumpkin Seeds Incorporated Biscuits",
@@ -213,15 +267,19 @@ export const profile: Profile = {
       summary: "Review focusing on nutritional and public health concerns affecting young women.",
     },
   ] as Publication[],
-
   researchInterests: [
-    "Clinical nutrition",
-    "Therapeutic diets",
-    "Food science and functional foods",
-    "Preventive nutrition",
-    "Patient-centered dietary counseling",
+    "Clinical Nutrition Strategies",
+    "Diabetes Management",
+    "Nutrient Composition Analysis",
+    "Public Health Nutrition",
   ],
-  researchCompetencies: [],
+  researchCompetencies: [
+    "Research Methodologies",
+    "Literature Review",
+    "Scientific Writing",
+    "Nutritional Assessment",
+    "Data Analysis using MS Excel",
+  ],
   skills: [
     {
       title: "Clinical Nutrition",
@@ -236,72 +294,76 @@ export const profile: Profile = {
     {
       title: "Research & Science",
       items: [
-        "Clinical Research",
-        "Evidence-Based Nutrition",
-        "Food Science",
+        "Research Methodologies",
+        "Literature Review",
         "Scientific Writing",
+        "Data Analysis using MS Excel",
       ],
       icon: Microscope,
     },
     {
-      title: "Professional Skills",
-      items: [
-        "Communication Skills",
-        "Adaptability",
-        "Interpersonal Skills",
-        "Patient Counselling",
-      ],
+      title: "Personal Skills",
+      items: ["Communication Skills", "Adaptability", "Interpersonal Skills"],
       icon: Stethoscope,
     },
   ] as SkillGroup[],
-  awards: [
+  facultyAchievement: {
+    title: "Faculty Achievement",
+    highlight: "Secured 2nd Position",
+    context: "Intramural Program",
+    organization: "Home Science Faculty",
+  },
+  conferences: [
     {
-      title: "Best Oral Presentation",
-      organization: "National Nutrition Research Symposium",
-      year: "2023",
-      details: "Recognized for presenting a compelling research paper on therapeutic nutrition and clinical outcomes.",
+      title: "Zinc supplementation for the prevention of Type-2 Diabetes Mellitus in humans with insulin resistance",
+      type: "Poster Presentation",
+      organization: "5th International Hybrid Conference on Diabetes & Healthcare",
+      year: "2022",
     },
     {
-      title: "Academic Excellence Award",
-      organization: "Department of Home Science",
+      title: "Association between obesity and zinc deficiency — A Review",
+      type: "E-Poster Presentation",
+      organization: "AIIMS BARICON",
       year: "2022",
-      details: "Honored for distinguished academic performance and research contribution.",
     },
   ],
-  conferences: [],
   languages: ["English", "Hindi"],
-  interests: ["Reading", "Research", "Travel", "Wellness"],
-  contactHeading: "Let’s build healthier futures through nutrition",
+  interests: ["Badminton", "Travelling", "Reading Books"],
+  contactHeading: "Let’s connect for evidence-based nutrition care",
   contactDescription:
-    "I welcome the opportunity to connect with patients, clinics, and organizations that value evidence-based nutrition care.",
+    "I welcome the opportunity to collaborate with individuals, clinics, and organizations that value compassionate and evidence-based nutrition guidance.",
   contactNote:
-    "I’m available for nutrition-related freelance work and collaborations.",
+    "Please share the public Fiverr profile URL to display it here.",
 };
+
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Education", href: "#education" },
   { label: "Internship", href: "#internship" },
+  { label: "Services", href: "#services" },
   { label: "Research", href: "#research" },
   { label: "Publications", href: "#publications" },
+  { label: "Presentations", href: "#presentations" },
+  { label: "Community Outreach", href: "#community-outreach" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const highlights = [
   {
-    title: "Ph.D. Research",
-    icon: GraduationCap,
-  },
-  {
     title: "Clinical Nutrition",
     icon: HeartPulse,
   },
   {
-    title: "Evidence-Based Research",
+    title: "Research Excellence",
+    icon: GraduationCap,
+  },
+  {
+    title: "Evidence-Based Care",
     icon: BrainCircuit,
   },
   {
-    title: "Online Diet Consultation",
+    title: "Online Consultation",
     icon: Sparkles,
   },
 ];
@@ -311,16 +373,16 @@ export const journeyPoints = [
     icon: GraduationCap,
     title: "Academic Excellence",
     description:
-      "Completed Bachelor's, Diploma, Master's and Ph.D. in Food Science & Nutrition from Banasthali Vidyapeeth with extensive academic and research experience.",
+      "Completed education from Banasthali Vidyapeeth in Food Science and Nutrition, spanning undergraduate, diploma, postgraduate, and doctoral studies.",
   },
   {
     icon: BriefcaseBusiness,
     title: "Clinical Exposure",
-    description: "Internship at Max Hospital strengthened real-world experience in patient care.",
+    description: "Internship at MAX Super Specialty Hospital strengthened hands-on experience in patient care and nutrition counselling.",
   },
   {
     icon: Award,
-    title: "Recognized Impact",
-    description: "Awards and publications reflect dedication to evidence-driven nutrition practice.",
+    title: "Research and Practice",
+    description: "Publications, presentations, and professional practice reflect a commitment to evidence-led nutrition work.",
   },
 ];

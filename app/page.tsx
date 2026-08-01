@@ -45,11 +45,18 @@ export default function Home() {
             </div>
             <div className="space-y-5">
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-600 dark:text-cyan-400">
-                {profile.title}
+                Professional Portfolio
               </p>
               <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
                 {profile.name}
               </h1>
+              <div className="flex flex-wrap gap-2">
+                {profile.heroTitles.map((title) => (
+                  <span key={title} className="inline-flex rounded-full border border-slate-200/70 bg-white/70 px-3 py-2 text-sm font-medium text-slate-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200">
+                    {title}
+                  </span>
+                ))}
+              </div>
               <p className="max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
                 {profile.intro}
               </p>
@@ -121,7 +128,13 @@ export default function Home() {
                 />
                 <div className="space-y-4 text-base leading-8 text-slate-600 dark:text-slate-300">
                   <p>{profile.about}</p>
-                  <p>{profile.aboutAdditional}</p>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {profile.aboutHighlights.map((item) => (
+                      <div key={item} className="rounded-2xl border border-emerald-100/80 bg-white/70 px-4 py-3 text-sm font-medium text-slate-700 dark:border-emerald-800/40 dark:bg-slate-900/70 dark:text-slate-200">
+                        {item}
+                      </div>
+                    ))}
+                  </div>
                   <p>{profile.aboutClosing}</p>
                 </div>
               </GlassPanel>
@@ -157,7 +170,7 @@ export default function Home() {
               <SectionHeading
                 eyebrow="Education"
                 title="Academic training grounded in science and patient care"
-                description="My educational foundation spans advanced research, clinical nutrition, and applied food science."
+                description="A strong academic foundation spanning research, clinical nutrition, and applied food science."
               />
               <div className="grid gap-6 lg:grid-cols-2">
                 {profile.education.map((item) => (
@@ -167,7 +180,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{item.degree}</h3>
                     <p className="text-base font-medium text-slate-700 dark:text-slate-200">{item.institution}</p>
-                    <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">{item.details}</p>
+                    {item.details ? <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">{item.details}</p> : null}
                   </GlassPanel>
                 ))}
               </div>
@@ -181,22 +194,30 @@ export default function Home() {
               <div className="space-y-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-400">Internship</p>
                 <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">{profile.internship.hospital}</h2>
+                <p className="text-sm font-medium uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{profile.internship.location}</p>
                 <p className="text-sm font-medium uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{profile.internship.period}</p>
               </div>
               <div className="rounded-3xl border border-white/70 bg-gradient-to-br from-cyan-50 to-white p-6 dark:border-white/10 dark:from-cyan-950/40 dark:to-slate-900/70">
                 <p className="text-base leading-8 text-slate-600 dark:text-slate-300">{profile.internship.details}</p>
                 <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Patient nutritional assessment",
-                    "Diet planning",
-                    "Therapeutic diets",
-                    "Nutrition counseling",
-                  ].map((item) => (
+                  {profile.internship.focusAreas.map((item) => (
                     <li key={item} className="rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-3 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200">
                       {item}
                     </li>
                   ))}
                 </ul>
+              </div>
+            </GlassPanel>
+          </ScrollReveal>
+        </section>
+
+        <section id="current-work" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-16">
+          <ScrollReveal>
+            <GlassPanel className="rounded-[2rem] border-amber-200/70 bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/70 p-8 dark:border-amber-800/60 dark:from-amber-950/30 dark:to-slate-900/70">
+              <div className="max-w-3xl space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-300">Current Work</p>
+                <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">{profile.currentWork.title}</h2>
+                <p className="text-base leading-8 text-slate-600 dark:text-slate-300">{profile.currentWork.description}</p>
               </div>
             </GlassPanel>
           </ScrollReveal>
@@ -302,23 +323,18 @@ export default function Home() {
                 title="Research communicated through scholarly presentations"
                 description="Selected presentations that reflect the academic and clinical focus of the work."
               />
-              {profile.conferences.length > 0 ? (
-                <div className="grid gap-6 lg:grid-cols-2">
-                  {profile.conferences.map((conference) => (
-                    <GlassPanel key={conference.title} className="space-y-3">
-                      <div className="inline-flex rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-sm font-medium text-cyan-700 dark:border-cyan-800/70 dark:bg-cyan-950/30 dark:text-cyan-300">
-                        {conference.year}
-                      </div>
-                      <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{conference.title}</h3>
-                      <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-600 dark:text-slate-300">{conference.type}</p>
-                    </GlassPanel>
-                  ))}
-                </div>
-              ) : (
-                <GlassPanel className="rounded-2xl border border-dashed border-cyan-200/80 bg-white/70 p-6 text-sm leading-7 text-slate-600 dark:border-cyan-800/60 dark:bg-slate-900/70 dark:text-slate-300">
-                  Poster presentation details are not yet included in the profile data. Please share the available presentation information to display it here.
-                </GlassPanel>
-              )}
+              <div className="grid gap-6 lg:grid-cols-2">
+                {profile.conferences.map((conference) => (
+                  <GlassPanel key={conference.title} className="space-y-3">
+                    <div className="inline-flex rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-sm font-medium text-cyan-700 dark:border-cyan-800/70 dark:bg-cyan-950/30 dark:text-cyan-300">
+                      {conference.year}
+                    </div>
+                    <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{conference.title}</h3>
+                    <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-600 dark:text-slate-300">{conference.type}</p>
+                    <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">{conference.organization}</p>
+                  </GlassPanel>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
         </section>
@@ -356,31 +372,28 @@ export default function Home() {
           </ScrollReveal>
         </section>
 
-        <section id="awards" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-16">
+        <section id="faculty-achievement" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-16">
           <ScrollReveal>
-            <div className="space-y-8">
-              <SectionHeading
-                eyebrow="Awards"
-                title="Recognized for excellence in research and presentation"
-                description="Highlights that reflect commitment to scholarly contribution and professional growth."
-              />
-              <div className="grid gap-6 lg:grid-cols-2">
-                {profile.awards.map((award) => (
-                  <GlassPanel key={award.title} className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="inline-flex rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
-                        {award.year}
-                      </div>
-                      <div className="rounded-full border border-emerald-200/80 px-3 py-1 text-sm font-medium text-emerald-700 dark:border-emerald-800/70 dark:text-emerald-300">
-                        {award.organization}
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{award.title}</h3>
-                    <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">{award.details}</p>
-                  </GlassPanel>
-                ))}
+            <GlassPanel className="rounded-[2rem] border-amber-200/70 bg-gradient-to-br from-amber-50/80 via-white to-cyan-50/70 p-8 dark:border-amber-800/60 dark:from-amber-950/30 dark:to-slate-900/70">
+              <div className="max-w-2xl space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-300">Faculty Achievement</p>
+                <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">{profile.facultyAchievement.highlight}</h2>
+                <p className="text-lg font-medium text-slate-700 dark:text-slate-200">{profile.facultyAchievement.context}</p>
+                <p className="text-base leading-8 text-slate-600 dark:text-slate-300">{profile.facultyAchievement.organization}</p>
               </div>
-            </div>
+            </GlassPanel>
+          </ScrollReveal>
+        </section>
+
+        <section id="community-outreach" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-16">
+          <ScrollReveal>
+            <GlassPanel className="rounded-[2rem] border-emerald-200/70 bg-gradient-to-br from-emerald-50/80 via-white to-cyan-50/70 p-8 dark:border-emerald-800/60 dark:from-emerald-950/30 dark:to-slate-900/70">
+              <SectionHeading
+                eyebrow="Community Outreach"
+                title="Building awareness through inclusive nutrition education"
+                description="Actively involved in academic events and university-led nutrition awareness campaigns."
+              />
+            </GlassPanel>
           </ScrollReveal>
         </section>
 
@@ -449,26 +462,30 @@ export default function Home() {
                 title={profile.contactHeading}
                 description={profile.contactDescription}
               />
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap">
-                <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 text-lg font-semibold text-slate-800 transition hover:text-emerald-700 dark:text-slate-100 dark:hover:text-emerald-300">
+              <div className="grid gap-4 md:grid-cols-3">
+                <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:text-emerald-300">
                   <Mail size={18} />
-                  {profile.email}
+                  Email
                 </a>
                 {hasLinkedIn ? (
-                  <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-semibold text-slate-800 transition hover:text-cyan-700 dark:text-slate-100 dark:hover:text-cyan-300">
+                  <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:text-cyan-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:text-cyan-300">
                     <ArrowUpRight size={18} />
                     LinkedIn
                   </a>
                 ) : (
-                  <span className="text-lg font-medium text-slate-600 dark:text-slate-300">Please share the LinkedIn profile URL to display it here.</span>
+                  <span className="rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-medium text-slate-600 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-300">
+                    LinkedIn link pending
+                  </span>
                 )}
                 {hasFiverr ? (
-                  <a href={profile.fiverr} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-semibold text-slate-800 transition hover:text-amber-700 dark:text-slate-100 dark:hover:text-amber-300">
+                  <a href={profile.fiverr} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:text-amber-300">
                     <ArrowUpRight size={18} />
                     Fiverr
                   </a>
                 ) : (
-                  <span className="text-lg font-medium text-slate-600 dark:text-slate-300">{profile.contactNote}</span>
+                  <span className="rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-medium text-slate-600 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-300">
+                    {profile.contactNote}
+                  </span>
                 )}
               </div>
               <a href="#top" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-700 transition hover:text-emerald-600 dark:text-emerald-300">
