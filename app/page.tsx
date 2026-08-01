@@ -465,7 +465,7 @@ export default function Home() {
               <div className="grid gap-4 md:grid-cols-3">
                 <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:text-emerald-300">
                   <Mail size={18} />
-                  Email
+                  sharmasilky3003@gmail.com
                 </a>
                 {hasLinkedIn ? (
                   <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-4 text-lg font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:text-cyan-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:text-cyan-300">
