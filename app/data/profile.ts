@@ -76,10 +76,12 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Dr. Silky Sharma",
-  title: "Ph.D. Food Science & Nutrition",
-  email: "silkysharma.dietitian@gmail.com",
+  title: "Ph.D. in Food Science & Nutrition | Freelance Clinical Dietitian | Nutrition Researcher",
+  email: "sharmasilky3003@gmail.com",
   linkedin: "https://www.linkedin.com/in/silky-sharma-a11854241",
-  location: "Delhi, India",
+  location: "India",
+  heroBadge: "Premium nutrition science portfolio",
+  heroFocus: "Translating nutrition science into compassionate, evidence-based patient care.",
   intro:
     "My name is Dr. Silky Sharma. I have completed my Ph.D. in Food Science and Nutrition from the Department of Home Science. I also hold a Master's degree in Food Science and Nutrition.",
   about:
