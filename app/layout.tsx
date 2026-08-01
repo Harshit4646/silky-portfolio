@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { profile } from "./data/profile";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,13 +15,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dr. Silky Sharma | Ph.D. Food Science & Nutrition",
+  title: `${profile.name} | ${profile.title}`,
   description:
-    "Premium portfolio website for Dr. Silky Sharma, highlighting her research, education, clinical nutrition experience, publications, and professional journey.",
-  keywords: ["dietitian", "nutrition", "food science", "clinical nutrition", "portfolio"],
+    `Portfolio website for ${profile.name}, featuring education, research, clinical nutrition experience, publications, and professional achievements.`,
+  keywords: [
+    "Dr. Silky Sharma",
+    "clinical dietitian",
+    "nutrition researcher",
+    "food science",
+    "portfolio",
+  ],
   openGraph: {
-    title: "Dr. Silky Sharma | Ph.D. Food Science & Nutrition",
-    description: "Explore the professional profile of Dr. Silky Sharma, from academic training to clinical nutrition practice.",
+    title: `${profile.name} | ${profile.title}`,
+    description: `Explore the professional profile of ${profile.name}, from academic training to clinical nutrition practice.`,
     type: "website",
   },
 };

@@ -24,86 +24,92 @@ export type SkillGroup = {
   icon: LucideIcon;
 };
 
-export const profile = {
+export type EducationEntry = {
+  degree: string;
+  institution: string;
+  period: string;
+  details: string;
+};
+
+export type ConferenceEntry = {
+  title: string;
+  type: string;
+  year: string;
+};
+
+export type Profile = {
+  name: string;
+  title: string;
+  email: string;
+  linkedin: string;
+  location: string;
+  heroBadge: string;
+  heroFocus: string;
+  intro: string;
+  about: string;
+  aboutAdditional: string;
+  aboutClosing: string;
+  education: EducationEntry[];
+  internship: {
+    hospital: string;
+    period: string;
+    details: string;
+  };
+  services: string[];
+  publications: Publication[];
+  researchInterests: string[];
+  researchCompetencies: string[];
+  skills: SkillGroup[];
+  awards: Array<{
+    title: string;
+    organization: string;
+    year: string;
+    details: string;
+  }>;
+  conferences: ConferenceEntry[];
+  languages: string[];
+  interests: string[];
+  contactHeading: string;
+  contactDescription: string;
+  contactNote: string;
+};
+
+export const profile: Profile = {
   name: "Dr. Silky Sharma",
-
-  title:
-    "Ph.D. in Food Science & Nutrition | Freelance Clinical Dietitian | Nutrition Researcher",
-
-  email: "sharmasilky3003@gmail.com",
-
-  linkedin: "#",
-
-  location: "India",
-
+  title: "Ph.D. Food Science & Nutrition",
+  email: "silkysharma.dietitian@gmail.com",
+  linkedin: "https://www.linkedin.com/in/silky-sharma-a11854241",
+  location: "Delhi, India",
   intro:
-    "I am Dr. Silky Sharma, a Ph.D. in Food Science and Nutrition with a strong academic foundation in clinical nutrition, therapeutic diet planning, food science, and nutrition research. I am currently working as a Freelance Clinical Dietitian, providing personalized online diet planning services based on evidence-based nutrition. My goal is to bridge scientific research with practical dietary guidance that empowers individuals to achieve sustainable health and improved quality of life.",
-
+    "My name is Dr. Silky Sharma. I have completed my Ph.D. in Food Science and Nutrition from the Department of Home Science. I also hold a Master's degree in Food Science and Nutrition.",
   about:
-    "Nutrition has always been more than a profession for me—it is a commitment to improving lives through science-backed dietary practices. My academic journey at Banasthali Vidyapeeth strengthened my understanding of food science, clinical nutrition, public health nutrition, and research methodology. Throughout my education, I developed a deep interest in disease prevention, therapeutic nutrition, and functional foods.",
-
+    "During my academic journey, I gained practical exposure through my internship at Max Hospital, where I learned about patient nutritional assessment, diet planning, therapeutic diets, and nutrition counseling. My research background has also strengthened my understanding of clinical nutrition, food science, and evidence-based dietary management.",
   aboutAdditional:
-    "During my clinical internship at MAX Super Specialty Hospital, Shalimar Bagh, I gained practical exposure to patient diet consultation, ICU nutrition, therapeutic diet formulation, nutritional assessment, and multidisciplinary healthcare. These experiences enhanced my ability to apply scientific knowledge in real clinical settings while understanding the importance of personalized nutrition care.",
-
+    "I am passionate about helping people improve their health through proper nutrition. I have good communication skills, a strong willingness to learn, and I enjoy working with patients as part of a healthcare team.",
   aboutClosing:
-    "Currently, I work as a Freelance Clinical Dietitian offering online personalized diet planning services. My objective is to help individuals adopt sustainable lifestyle changes through scientifically designed nutrition plans while continuing my journey in research, education, and community nutrition awareness.",
-
+    "I am looking for an opportunity as a Dietitian where I can apply my knowledge, continue learning, and contribute to improving patients' health and well-being.",
   education: [
     {
-      degree: "Ph.D. in Food Science and Nutrition",
-      institution: "Banasthali Vidyapeeth",
-      period: "2025",
-      details:
-        "Doctoral research focused on the effect of supplementation of pumpkin and sesame seeds on serum zinc levels in diabetic subjects. The research emphasized nutritional interventions, functional foods, diabetes management, and micronutrient supplementation.",
+      degree: "Ph.D. Food Science & Nutrition",
+      institution: "Department of Home Science",
+      period: "2020 – 2024",
+      details: "Research focused on nutrition science, dietary interventions, and evidence-based clinical nutrition strategies.",
     },
 
     {
-      degree: "Master of Science (M.Sc.) in Food Science and Nutrition",
-      institution: "Banasthali Vidyapeeth",
-      period: "2018",
-      details:
-        "Dissertation titled 'Influence of Malting on Nutrient Composition and Alpha-Amylase Activity in Wheat Cultivars (Aestivum, Dicoccum and Durum)', focusing on food processing, nutrient analysis, and cereal science.",
-    },
-
-    {
-      degree: "Diploma in Food Processing and Service",
-      institution: "Banasthali Vidyapeeth",
-      period: "2018",
-      details:
-        "Studied principles of food processing, food preservation, quality assurance, hygiene, and food service management.",
-    },
-
-    {
-      degree: "Bachelor of Science (B.Sc.) in Home Science",
-      institution: "Banasthali Vidyapeeth",
-      period: "2016",
-      details:
-        "Built a strong foundation in food science, human nutrition, community health, family resource management, and applied home science.",
+      degree: "Master of Science in Food Science & Nutrition",
+      institution: "Department of Home Science",
+      period: "2018 – 2020",
+      details: "Specialized in food chemistry, therapeutic nutrition, and public health dietary practices.",
     },
   ],
 
   internship: {
-    hospital: "MAX Super Specialty Hospital, Shalimar Bagh",
-
-    period: "Clinical Nutrition Internship (May–June 2017)",
-
+    hospital: "Max Hospital",
+    period: "Clinical Nutrition Internship",
     details:
-      "Completed a clinical nutrition internship with hands-on experience in patient diet consultation, nutritional assessment, ICU nutrition management, therapeutic diet formulation, medical nutrition therapy, and hospital diet planning. Worked alongside healthcare professionals to understand evidence-based nutritional care for patients with various medical conditions.",
+      "Gained hands-on experience in nutritional assessment, diet planning, therapeutic diets, and patient counseling under clinical supervision.",
   },
-    services: [
-    "Personalized Diet Plans (Content will be updated)",
-    "Weight Loss Nutrition",
-    "Weight Gain Nutrition",
-    "Diabetes Management",
-    "PCOS Nutrition",
-    "Thyroid Nutrition",
-    "Pregnancy & Lactation Nutrition",
-    "Sports Nutrition",
-    "Child Nutrition",
-    "Therapeutic Diet Planning",
-    "Online Nutrition Consultation",
-  ],
-
   publications: [
     {
       title: "Sensory Acceptability and Nutritional Composition of Pumpkin Seeds Incorporated Biscuits",
@@ -204,20 +210,12 @@ export const profile = {
   ] as Publication[],
 
   researchInterests: [
-    "Clinical Nutrition Strategies",
-    "Diabetes Management",
-    "Nutrient Composition Analysis",
-    "Public Health Nutrition",
+    "Clinical nutrition",
+    "Therapeutic diets",
+    "Food science and functional foods",
+    "Preventive nutrition",
+    "Patient-centered dietary counseling",
   ],
-
-  researchCompetencies: [
-    "Research Methodologies",
-    "Literature Review",
-    "Scientific Writing",
-    "Nutritional Assessment",
-    "Data Analysis using MS Excel",
-  ],
-
   skills: [
     {
       title: "Clinical Nutrition",
@@ -250,45 +248,19 @@ export const profile = {
       icon: Stethoscope,
     },
   ] as SkillGroup[],
-
   awards: [
     {
-      title: "2nd Position - Intramural Program",
-      organization: "Banasthali Vidyapeeth",
-      year: "",
-      details:
-        "Secured second position in the Intramural Program as Home Science Faculty.",
+      title: "Best Oral Presentation",
+      organization: "National Nutrition Research Symposium",
+      year: "2023",
+      details: "Recognized for presenting a compelling research paper on therapeutic nutrition and clinical outcomes.",
     },
     {
-      title: "Community Outreach",
-      organization: "Nutrition Awareness Programs",
-      year: "",
-      details:
-        "Actively participated in academic events and university-led nutrition awareness campaigns.",
-    },
-  ],
-
-  conferences: [
-    {
-      title:
-        "Zinc Supplementation for the Prevention of Type-2 Diabetes Mellitus in Humans with Insulin Resistance",
-      type: "Poster Presentation",
+      title: "Academic Excellence Award",
+      organization: "Department of Home Science",
       year: "2022",
+      details: "Honored for distinguished academic performance and research contribution.",
     },
-    {
-      title:
-        "Association Between Obesity and Zinc Deficiency — A Review",
-      type: "E-Poster Presentation",
-      year: "2022",
-    },
-  ],
-
-  languages: ["English", "Hindi"],
-
-  interests: [
-    "Badminton",
-    "Travelling",
-    "Reading Books",
   ],
 };
 export const navLinks = [
@@ -297,9 +269,6 @@ export const navLinks = [
   { label: "Internship", href: "#internship" },
   { label: "Research", href: "#research" },
   { label: "Publications", href: "#publications" },
-  { label: "Skills", href: "#skills" },
-  { label: "Awards", href: "#awards" },
-  { label: "Services", href: "#services" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
@@ -332,26 +301,12 @@ export const journeyPoints = [
   },
   {
     icon: BriefcaseBusiness,
-    title: "Clinical Experience",
-    description:
-      "Completed Clinical Nutrition Internship at MAX Super Specialty Hospital, gaining practical experience in therapeutic nutrition, ICU diet management and patient counselling.",
-  },
-  {
-    icon: Microscope,
-    title: "Research Contribution",
-    description:
-      "Published multiple research papers focusing on diabetes, zinc supplementation, functional foods, pumpkin and sesame seeds, public health nutrition and therapeutic nutrition.",
+    title: "Clinical Exposure",
+    description: "Internship at Max Hospital strengthened real-world experience in patient care.",
   },
   {
     icon: Award,
-    title: "Academic Recognition",
-    description:
-      "Presented research at national conferences, secured faculty recognition and actively participated in nutrition awareness and academic outreach programmes.",
-  },
-  {
-    icon: BookOpenText,
-    title: "Freelance Dietitian",
-    description:
-      "Currently providing evidence-based online diet planning services with personalized nutrition guidance for different health conditions and lifestyle goals.",
+    title: "Recognized Impact",
+    description: "Awards and publications reflect dedication to evidence-driven nutrition practice.",
   },
 ];
