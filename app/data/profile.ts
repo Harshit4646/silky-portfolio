@@ -42,6 +42,7 @@ export type Profile = {
   title: string;
   email: string;
   linkedin: string;
+  fiverr: string;
   location: string;
   heroBadge: string;
   heroFocus: string;
@@ -79,6 +80,7 @@ export const profile: Profile = {
   title: "Ph.D. in Food Science & Nutrition | Freelance Clinical Dietitian | Nutrition Researcher",
   email: "sharmasilky3003@gmail.com",
   linkedin: "https://www.linkedin.com/in/silky-sharma-a11854241",
+  fiverr: "https://www.fiverr.com/sellers/silky3003/edit",
   location: "India",
   heroBadge: "Premium nutrition science portfolio",
   heroFocus: "Translating nutrition science into compassionate, evidence-based patient care.",
@@ -112,6 +114,7 @@ export const profile: Profile = {
     details:
       "Gained hands-on experience in nutritional assessment, diet planning, therapeutic diets, and patient counseling under clinical supervision.",
   },
+  services: [],
   publications: [
     {
       title: "Sensory Acceptability and Nutritional Composition of Pumpkin Seeds Incorporated Biscuits",
@@ -218,6 +221,7 @@ export const profile: Profile = {
     "Preventive nutrition",
     "Patient-centered dietary counseling",
   ],
+  researchCompetencies: [],
   skills: [
     {
       title: "Clinical Nutrition",
@@ -264,6 +268,14 @@ export const profile: Profile = {
       details: "Honored for distinguished academic performance and research contribution.",
     },
   ],
+  conferences: [],
+  languages: ["English", "Hindi"],
+  interests: ["Reading", "Research", "Travel", "Wellness"],
+  contactHeading: "Let’s build healthier futures through nutrition",
+  contactDescription:
+    "I welcome the opportunity to connect with patients, clinics, and organizations that value evidence-based nutrition care.",
+  contactNote:
+    "I’m available for nutrition-related freelance work and collaborations.",
 };
 export const navLinks = [
   { label: "About", href: "#about" },

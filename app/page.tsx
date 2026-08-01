@@ -9,6 +9,7 @@ import { highlights, journeyPoints, navLinks, profile } from "./data/profile";
 
 export default function Home() {
   const hasLinkedIn = Boolean(profile.linkedin);
+  const hasFiverr = Boolean(profile.fiverr);
 
   return (
     <div id="top" className="relative min-h-screen overflow-x-hidden text-slate-900 transition-colors dark:text-slate-100">
@@ -209,13 +210,19 @@ export default function Home() {
                 title="Nutrition support shaped around individual needs"
                 description="Evidence-led guidance for everyday wellness, therapeutic nutrition, and long-term health goals."
               />
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {profile.services.map((service) => (
-                  <GlassPanel key={service} className="rounded-2xl border border-emerald-100/80 bg-white/80 p-5 dark:border-emerald-900/40 dark:bg-slate-900/70">
-                    <p className="text-base font-semibold text-slate-800 dark:text-white">{service}</p>
-                  </GlassPanel>
-                ))}
-              </div>
+              {profile.services.length > 0 ? (
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {profile.services.map((service) => (
+                    <GlassPanel key={service} className="rounded-2xl border border-emerald-100/80 bg-white/80 p-5 transition hover:-translate-y-1 hover:border-emerald-300 dark:border-emerald-900/40 dark:bg-slate-900/70">
+                      <p className="text-base font-semibold text-slate-800 dark:text-white">{service}</p>
+                    </GlassPanel>
+                  ))}
+                </div>
+              ) : (
+                <GlassPanel className="rounded-2xl border border-dashed border-emerald-200/80 bg-white/70 p-6 text-sm leading-7 text-slate-600 dark:border-emerald-800/60 dark:bg-slate-900/70 dark:text-slate-300">
+                  Services information has not yet been provided in the profile data. Please share the available consultation services so they can be displayed here.
+                </GlassPanel>
+              )}
             </div>
           </ScrollReveal>
         </section>
@@ -243,13 +250,19 @@ export default function Home() {
                 </GlassPanel>
                 <GlassPanel className="space-y-4">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-400">Research competencies</p>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {profile.researchCompetencies.map((item) => (
-                      <div key={item} className="rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-3 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                  {profile.researchCompetencies.length > 0 ? (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {profile.researchCompetencies.map((item) => (
+                        <div key={item} className="rounded-2xl border border-slate-200/70 bg-white/70 px-4 py-3 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200">
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+                      Additional research competencies are not yet included in the profile data.
+                    </p>
+                  )}
                 </GlassPanel>
               </div>
             </div>
@@ -289,17 +302,23 @@ export default function Home() {
                 title="Research communicated through scholarly presentations"
                 description="Selected presentations that reflect the academic and clinical focus of the work."
               />
-              <div className="grid gap-6 lg:grid-cols-2">
-                {profile.conferences.map((conference) => (
-                  <GlassPanel key={conference.title} className="space-y-3">
-                    <div className="inline-flex rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-sm font-medium text-cyan-700 dark:border-cyan-800/70 dark:bg-cyan-950/30 dark:text-cyan-300">
-                      {conference.year}
-                    </div>
-                    <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{conference.title}</h3>
-                    <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-600 dark:text-slate-300">{conference.type}</p>
-                  </GlassPanel>
-                ))}
-              </div>
+              {profile.conferences.length > 0 ? (
+                <div className="grid gap-6 lg:grid-cols-2">
+                  {profile.conferences.map((conference) => (
+                    <GlassPanel key={conference.title} className="space-y-3">
+                      <div className="inline-flex rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-sm font-medium text-cyan-700 dark:border-cyan-800/70 dark:bg-cyan-950/30 dark:text-cyan-300">
+                        {conference.year}
+                      </div>
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{conference.title}</h3>
+                      <p className="text-sm font-medium uppercase tracking-[0.28em] text-slate-600 dark:text-slate-300">{conference.type}</p>
+                    </GlassPanel>
+                  ))}
+                </div>
+              ) : (
+                <GlassPanel className="rounded-2xl border border-dashed border-cyan-200/80 bg-white/70 p-6 text-sm leading-7 text-slate-600 dark:border-cyan-800/60 dark:bg-slate-900/70 dark:text-slate-300">
+                  Poster presentation details are not yet included in the profile data. Please share the available presentation information to display it here.
+                </GlassPanel>
+              )}
             </div>
           </ScrollReveal>
         </section>
@@ -436,9 +455,17 @@ export default function Home() {
                   {profile.email}
                 </a>
                 {hasLinkedIn ? (
-                  <a href={profile.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-lg font-semibold text-slate-800 transition hover:text-cyan-700 dark:text-slate-100 dark:hover:text-cyan-300">
+                  <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-semibold text-slate-800 transition hover:text-cyan-700 dark:text-slate-100 dark:hover:text-cyan-300">
                     <ArrowUpRight size={18} />
                     LinkedIn
+                  </a>
+                ) : (
+                  <span className="text-lg font-medium text-slate-600 dark:text-slate-300">Please share the LinkedIn profile URL to display it here.</span>
+                )}
+                {hasFiverr ? (
+                  <a href={profile.fiverr} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-semibold text-slate-800 transition hover:text-amber-700 dark:text-slate-100 dark:hover:text-amber-300">
+                    <ArrowUpRight size={18} />
+                    Fiverr
                   </a>
                 ) : (
                   <span className="text-lg font-medium text-slate-600 dark:text-slate-300">{profile.contactNote}</span>
